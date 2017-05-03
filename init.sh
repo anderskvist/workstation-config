@@ -23,6 +23,8 @@ sudo apt-get -f install \
 	openssh-server \
 	openvpn \
 	git \
+	nodejs-legacy \
+	npm
 
 # install openvpn helper script
 if [ ! -d ~/Projects/openvpn-script ]; then
