@@ -25,8 +25,10 @@ sudo apt-get -f install \
 	git \
 
 # install openvpn helper script
-git clone git@github.com:anderskvist/openvpn-script.git ~/Projects/openvpn-script
-ln -sf ~/Projects/openvpn-script/openvpn.sh ~/bin/
+if [ ! -d ~/Projects/openvpn-script ]; then
+	git clone git@github.com:anderskvist/openvpn-script.git ~/Projects/openvpn-script
+	ln -sf ~/Projects/openvpn-script/openvpn.sh ~/bin/
+fi
 
 # chrome
 if [ ! -f ${SPOOL}/google-chrome-stable_current_amd64.deb ]; then
