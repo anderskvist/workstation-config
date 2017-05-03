@@ -24,7 +24,8 @@ sudo apt-get -f install \
 	openvpn \
 	git \
 	nodejs-legacy \
-	npm
+	npm \
+	nmap
 
 # install openvpn helper script
 if [ ! -d ~/Projects/openvpn-script ]; then
