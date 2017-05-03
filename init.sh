@@ -1,3 +1,7 @@
+SPOOL=/var/spool/${USER}-workstation-config/
+sudo mkdir -p ${SPOOL}
+sudo chown ${USER}:${GROUPS} ${SPOOL}
+
 mkdir -p ~/bin/
 
 # i3wm
@@ -23,3 +27,12 @@ sudo apt-get -f install \
 # install openvpn helper script
 git clone git@github.com:anderskvist/openvpn-script.git ~/Projects/openvpn-script
 ln -sf ~/Projects/openvpn-script/openvpn.sh ~/bin/
+
+# chrome
+if [ ! -f ${SPOOL}/google-chrome-stable_current_amd64.deb ]; then
+	cd ${SPOOL}
+	curl -O https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+	sudo dpkg -i google-chrome-stable_current_amd64.deb
+	sudo apt-get -f -y install
+	cd ~
+fi
