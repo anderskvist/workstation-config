@@ -26,7 +26,8 @@ sudo apt-get -f install \
 	nodejs-legacy \
 	npm \
 	nmap \
-	whois
+	whois \
+	vlc
 
 # install openvpn helper script
 if [ ! -d ~/Projects/openvpn-script ]; then
