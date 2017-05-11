@@ -27,7 +27,8 @@ sudo apt-get -f install \
 	npm \
 	nmap \
 	whois \
-	vlc
+	vlc \
+	virt-manager
 
 # install openvpn helper script
 if [ ! -d ~/Projects/openvpn-script ]; then
