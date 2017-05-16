@@ -11,7 +11,8 @@ sudo apt-get -f install \
 	udiskie \
 	numlockx \
 	i3status \
-	i3lock
+	i3lock \
+	dmenu
 
 mkdir -p ~/.config/i3/
 ln -sf ${PWD}/i3/config ~/.config/i3/config
@@ -29,7 +30,8 @@ sudo apt-get -f install \
 	whois \
 	vlc \
 	virt-manager \
-	resolvconf
+	resolvconf \
+	curl
 
 # install openvpn helper script
 if [ ! -d ~/Projects/openvpn-script ]; then
