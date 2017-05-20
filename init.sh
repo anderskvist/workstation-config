@@ -31,7 +31,12 @@ sudo apt-get -f install \
 	vlc \
 	virt-manager \
 	resolvconf \
+	pwgen \
+	php-cli \
+	php-elisp \
+	mc \
 	curl
+
 
 # install openvpn helper script
 if [ ! -d ~/Projects/openvpn-script ]; then
