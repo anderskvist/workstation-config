@@ -12,6 +12,7 @@ sudo apt-get -f install \
 	numlockx \
 	i3status \
 	i3lock \
+	acpi \
 	dmenu
 
 mkdir -p ~/.config/i3/
