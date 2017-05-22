@@ -13,6 +13,7 @@ sudo apt-get -f install \
 	i3status \
 	i3lock \
 	acpi \
+	xautolock \
 	dmenu
 
 mkdir -p ~/.config/i3/
