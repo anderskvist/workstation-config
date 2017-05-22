@@ -195,7 +195,10 @@ bindsym Control+Print exec scrot -s -e 'mv $f ~/Pictures/'
 # lock screen
 #bindsym $mod+l exec i3lock -c 000000
 bindsym Control+Mod1+l exec "~/bin/lock_screen.sh"
-exec --no-startup-id xautolock -time 1 -locker '~/bin/lock_screen.sh' &
+# auto lock screen after 2 minutes
+exec --no-startup-id xautolock -time 2 -locker '~/bin/lock_screen.sh' &
+# auto off screen after 5 minutes
+exec --no-startup-id xset dpms 0 0 300
 
 for_window [title="CSSH"] floating enable
 
