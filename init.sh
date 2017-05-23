@@ -46,6 +46,7 @@ sudo apt-get -y -f install \
 	php-cli \
 	php-elisp \
 	mc \
+	screen \
 	curl
 
 
