@@ -1,6 +1,17 @@
 #!/bin/bash
-EXTERNAL_OUTPUT="DP1"
-INTERNAL_OUTPUT="eDP1"
+ID=$(cat /var/lib/dbus/machine-id)
+case ${ID} in
+    618215eaded54b138cce9aa1c8b9a0b5)
+	# Lenovo Thinkpad X1 Carbon
+	EXTERNAL_OUTPUT="DP-1-2"
+	INTERNAL_OUTPUT="eDP-1"
+	;;
+    unknown)
+	# Dell XPS 15
+	EXTERNAL_OUTPUT="DP1"
+	INTERNAL_OUTPUT="eDP1"
+	;;
+esac
 
 # if we don't have a file, start at zero
 if [ ! -f "/tmp/monitor_mode.dat" ] ; then
