@@ -37,6 +37,7 @@ sudo apt-get -f install \
 	php-cli \
 	php-elisp \
 	mc \
+	clusterssh \
 	curl
 
 
