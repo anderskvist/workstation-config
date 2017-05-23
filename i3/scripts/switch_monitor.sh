@@ -6,7 +6,7 @@ case ${ID} in
 	EXTERNAL_OUTPUT="DP-1-2"
 	INTERNAL_OUTPUT="eDP-1"
 	;;
-    unknown)
+    943ad03284384bc8b281724a5e2b0b5a)
 	# Dell XPS 15
 	EXTERNAL_OUTPUT="DP1"
 	INTERNAL_OUTPUT="eDP1"
