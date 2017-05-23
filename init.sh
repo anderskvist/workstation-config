@@ -5,7 +5,7 @@ sudo chown ${USER}:${GROUPS} ${SPOOL}
 mkdir -p ~/bin/
 
 # i3wm
-sudo apt-get -f install \
+sudo apt-get -y -f install \
 	i3-wm \
 	scrot \
 	udiskie \
@@ -21,7 +21,7 @@ ln -sf ${PWD}/i3/config ~/.config/i3/config
 ln -sf ${PWD}/i3/scripts/* ~/bin/
 
 # misc
-sudo apt-get -f install \
+sudo apt-get -y -f install \
 	emacs-nox \
 	openssh-server \
 	openvpn \
