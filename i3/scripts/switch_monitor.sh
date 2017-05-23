@@ -25,15 +25,19 @@ fi
 if [ $monitor_mode = "all" ]; then
         monitor_mode="EXTERNAL"
         xrandr --primary --output $INTERNAL_OUTPUT --off --output $EXTERNAL_OUTPUT --auto
+	DISPLAY=:0.0 /usr/bin/notify-send -i monitor -u normal "EXTERNAL"
 elif [ $monitor_mode = "EXTERNAL" ]; then
         monitor_mode="INTERNAL"
         xrandr --primary --output $INTERNAL_OUTPUT --auto --output $EXTERNAL_OUTPUT --off
+	DISPLAY=:0.0 /usr/bin/notify-send -i monitor -u normal "INTERNAL"
 elif [ $monitor_mode = "INTERNAL" ]; then
         monitor_mode="CLONES"
         xrandr --output $INTERNAL_OUTPUT --auto --output $EXTERNAL_OUTPUT --auto --same-as $INTERNAL_OUTPUT
+	DISPLAY=:0.0 /usr/bin/notify-send -i monitor -u normal "CLONE"
 else
         monitor_mode="all"
         xrandr --output $INTERNAL_OUTPUT --auto --output $EXTERNAL_OUTPUT --auto --left-of $INTERNAL_OUTPUT
+	DISPLAY=:0.0 /usr/bin/notify-send -i monitor -u normal "ALL"
 fi
 echo "${monitor_mode}" > /tmp/monitor_mode.dat
 
