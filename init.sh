@@ -22,7 +22,7 @@ ln -sf ${PWD}/i3/scripts/* ~/bin/
 
 
 # clusterssh
-sudo apt-get -y -f install 
+sudo apt-get -y -f install \
 	clusterssh
 
 mkdir -p ~/.clusterssh/
