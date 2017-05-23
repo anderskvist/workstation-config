@@ -20,6 +20,15 @@ mkdir -p ~/.config/i3/
 ln -sf ${PWD}/i3/config ~/.config/i3/config
 ln -sf ${PWD}/i3/scripts/* ~/bin/
 
+
+# clusterssh
+sudo apt-get -y -f install 
+	clusterssh
+
+mkdir -p ~/.clusterssh/
+ln -sf ${PWD}/clusterssh/config ~/.clusterssh/config
+
+
 # misc
 sudo apt-get -y -f install \
 	emacs-nox \
@@ -37,7 +46,6 @@ sudo apt-get -y -f install \
 	php-cli \
 	php-elisp \
 	mc \
-	clusterssh \
 	curl
 
 
