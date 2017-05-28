@@ -179,6 +179,7 @@ bindsym $mod+Shift+s exec --no-startup-id ~/bin/switch_monitor.sh
 #exec --no-startup-id xrandr --output eDP-1-1 --dpi 200
 
 exec --no-startup-id xsetroot -solid "#111111"
+exec --no-startup-id syndaemon -d -t -K
 exec --no-startup-id nm-applet
 exec --no-startup-id udiskie
 exec --no-startup-id numlockx
