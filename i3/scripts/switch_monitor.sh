@@ -24,11 +24,11 @@ fi
 
 if [ $monitor_mode = "all" ]; then
         monitor_mode="EXTERNAL"
-        xrandr --primary --output $INTERNAL_OUTPUT --off --output $EXTERNAL_OUTPUT --auto
+        xrandr --output $INTERNAL_OUTPUT --primary --off --output $EXTERNAL_OUTPUT --auto
 	DISPLAY=:0.0 /usr/bin/notify-send -i monitor -u normal "EXTERNAL"
 elif [ $monitor_mode = "EXTERNAL" ]; then
         monitor_mode="INTERNAL"
-        xrandr --primary --output $INTERNAL_OUTPUT --auto --output $EXTERNAL_OUTPUT --off
+        xrandr --output $INTERNAL_OUTPUT --primary --auto --output $EXTERNAL_OUTPUT --off
 	DISPLAY=:0.0 /usr/bin/notify-send -i monitor -u normal "INTERNAL"
 elif [ $monitor_mode = "INTERNAL" ]; then
         monitor_mode="CLONES"
