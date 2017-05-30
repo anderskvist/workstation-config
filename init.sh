@@ -19,7 +19,7 @@ sudo apt-get -y -f install \
 mkdir -p ~/.config/i3/
 ln -sf ${PWD}/i3/config ~/.config/i3/config
 ln -sf ${PWD}/i3/scripts/* ~/bin/
-
+sudo cp -f ${PWD}/X11/xorg.conf /etc/X11/xorg.conf
 
 # clusterssh
 sudo apt-get -y -f install \
