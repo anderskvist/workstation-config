@@ -24,7 +24,7 @@ fi
 
 if [ $monitor_mode = "all" ]; then
         monitor_mode="EXTERNAL"
-        xrandr --output $INTERNAL_OUTPUT --primary --off --output $EXTERNAL_OUTPUT --auto
+        xrandr --output $INTERNAL_OUTPUT --off --output $EXTERNAL_OUTPUT --primary --auto
 	DISPLAY=:0.0 /usr/bin/notify-send -i monitor -u normal "EXTERNAL"
 elif [ $monitor_mode = "EXTERNAL" ]; then
         monitor_mode="INTERNAL"
