@@ -1,8 +1,13 @@
 #!/bin/bash
 ID=$(cat /var/lib/dbus/machine-id)
 case ${ID} in
+    d6a597973162428ca880c91c02792f1d)
+	# Lenovo Thinkpad X1 Carbon I7
+	EXTERNAL_OUTPUT="DP2-1"
+	INTERNAL_OUTPUT="eDP1"
+	;;
     618215eaded54b138cce9aa1c8b9a0b5)
-	# Lenovo Thinkpad X1 Carbon
+	# Lenovo Thinkpad X1 Carbon I5
 	EXTERNAL_OUTPUT="DP-1-2"
 	INTERNAL_OUTPUT="eDP-1"
 	;;
