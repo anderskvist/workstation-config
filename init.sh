@@ -14,6 +14,7 @@ sudo apt-get -y -f install \
 	i3lock \
 	acpi \
 	xautolock \
+	xbacklight \
 	dmenu
 
 mkdir -p ~/.config/i3/
