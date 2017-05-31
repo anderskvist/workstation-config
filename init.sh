@@ -48,6 +48,7 @@ sudo apt-get -y -f install \
 	php-elisp \
 	mc \
 	screen \
+	geeqie \
 	curl
 
 
