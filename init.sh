@@ -46,6 +46,7 @@ sudo apt-get -y -f install \
 	pwgen \
 	php-cli \
 	php-elisp \
+	php-curl \
 	mc \
 	screen \
 	geeqie \
