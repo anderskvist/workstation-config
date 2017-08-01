@@ -51,7 +51,8 @@ sudo apt-get -y -f install \
 	screen \
 	geeqie \
 	curl \
-	default-jdk
+	default-jdk \
+	icedtea-netx
 
 
 # install openvpn helper script
