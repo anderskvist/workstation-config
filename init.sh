@@ -50,7 +50,8 @@ sudo apt-get -y -f install \
 	mc \
 	screen \
 	geeqie \
-	curl
+	curl \
+	default-jdk
 
 
 # install openvpn helper script
