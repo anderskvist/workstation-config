@@ -18,6 +18,26 @@ case ${ID} in
 	;;
 esac
 
+# For this to work, you will nedd to add the following /etc/udev/rules.d/99-screen-unplug.rules
+# ACTION=="change", SUBSYSTEM=="drm", ENV{HOTPLUG}=="1", RUN+="/home/akv/bin/switch_monitor.sh udev"
+if [ "${1}" = "udev" ]; then
+	export DISPLAY=:0
+	export XAUTHORITY=$(ps -C Xorg -f --no-header | sed -n 's/.*-auth //; s/ -[^ ].*//; p')
+
+	xrandr|grep "^${EXTERNAL_OUTPUT} connected" > /dev/null 2>&1
+	if [ $? -eq 0 ]; then
+	        monitor_mode="EXTERNAL"
+		xrandr --output $INTERNAL_OUTPUT --off --output $EXTERNAL_OUTPUT --primary --auto
+	        DISPLAY=:0.0 /usr/bin/notify-send -i monitor -u normal "EXTERNAL"
+	else
+		monitor_mode="INTERNAL"
+		xrandr --output $INTERNAL_OUTPUT --primary --auto --output $EXTERNAL_OUTPUT --off
+	        DISPLAY=:0.0 /usr/bin/notify-send -i monitor -u normal "INTERNAL"
+	fi
+	echo "${monitor_mode}" > /tmp/monitor_mode.dat
+	exit
+fi
+
 # if we don't have a file, start at zero
 if [ ! -f "/tmp/monitor_mode.dat" ] ; then
   monitor_mode="all"
@@ -41,7 +61,7 @@ elif [ $monitor_mode = "INTERNAL" ]; then
 	DISPLAY=:0.0 /usr/bin/notify-send -i monitor -u normal "CLONE"
 else
         monitor_mode="all"
-        xrandr --output $INTERNAL_OUTPUT --auto --output $EXTERNAL_OUTPUT --auto --left-of $INTERNAL_OUTPUT
+        xrandr --output $INTERNAL_OUTPUT --auto --output $EXTERNAL_OUTPUT --primary --auto --left-of $INTERNAL_OUTPUT
 	DISPLAY=:0.0 /usr/bin/notify-send -i monitor -u normal "ALL"
 fi
 echo "${monitor_mode}" > /tmp/monitor_mode.dat
