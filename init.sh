@@ -29,6 +29,9 @@ sudo apt-get -y -f install \
 mkdir -p ~/.clusterssh/
 ln -sf ${PWD}/clusterssh/config ~/.clusterssh/config
 
+# make sure we have the pcspkr module active
+sudo sed 's/^blacklist pcspkr/#blacklist pcspkr/g' /etc/modprobe.d/blacklist.conf -i
+sudo modprobe pcspkr
 
 # misc
 sudo apt-get -y -f install \
