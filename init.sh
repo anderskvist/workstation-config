@@ -52,7 +52,8 @@ sudo apt-get -y -f install \
 	geeqie \
 	curl \
 	default-jdk \
-	icedtea-netx
+	icedtea-netx \
+	beep
 
 
 # install openvpn helper script
