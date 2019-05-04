@@ -15,7 +15,10 @@ amixer cset numid=55 0
 amixer cset numid=4 on
 amixer cset numid=3 100
 
-beep
+# ascii values for "l o w b a t"
+for I in 108 111 119 98 97 116; do
+	beep -f $((${I}*10)) -l 50
+done
 
 amixer cset numid=11 ${MASTERMUTE}
 amixer cset numid=10 ${MASTERVOLUME}
