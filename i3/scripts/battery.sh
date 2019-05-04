@@ -6,9 +6,15 @@ BATTINFO=$(acpi -b)
 
 
 if [ "${STATUS}" = "Discharging" ]; then
-    if [ ${CAPACITY} -lt 5 ]; then
+    # BEEP
+    if [ ${CAPACITY} -lt 15 ]; then
+	~/bin/beep.sh
+    fi
+
+    # Display notification
+    if [ ${CAPACITY} -lt 10 ]; then
         DISPLAY=:0.0 /usr/bin/notify-send -i battery-empty -u critical "Battery critical!" "${BATTINFO}"
-    elif [ ${CAPACITY} -lt 15 ]; then
+    elif [ ${CAPACITY} -lt 25 ]; then
         DISPLAY=:0.0 /usr/bin/notify-send -i battery-low -u normal "Battery warning!" "${BATTINFO}"
     fi
 fi
