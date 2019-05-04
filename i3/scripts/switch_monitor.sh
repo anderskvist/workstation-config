@@ -1,4 +1,15 @@
 #!/bin/bash
+
+trap finish EXIT
+
+function finish () {
+	# Update background image after resizing screen
+	feh --bg-scale /home/akv/Pictures/facebook_connection_map.png
+
+	# restart xautolock to update coordinates for corners
+	xautolock -restart
+}
+
 ID=$(cat /var/lib/dbus/machine-id)
 case ${ID} in
     d6a597973162428ca880c91c02792f1d)
