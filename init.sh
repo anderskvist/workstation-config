@@ -57,7 +57,8 @@ sudo apt-get -y -f install \
 	curl \
 	default-jdk \
 	icedtea-netx \
-	beep
+	beep \
+	feh
 
 
 # install openvpn helper script
