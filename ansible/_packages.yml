@@ -81,3 +81,12 @@
   - name: Install Etcher
     apt:
       name: ['balena-etcher-electron']
+
+# golang
+  - name: Add golang PPA
+    apt_repository:
+      repo: ppa:longsleep/golang-backports
+
+  - name: Install golang
+    apt:
+      name: ['golang-go']
