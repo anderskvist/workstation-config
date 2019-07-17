@@ -77,3 +77,9 @@
     modprobe:
       name: pcspkr
       state: present
+
+# background image
+  - name: Copy background image
+    copy:
+      src: ~/Projects/workstation-config/background.png
+      dest: ~/.background.png

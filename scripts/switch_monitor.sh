@@ -4,7 +4,7 @@ trap finish EXIT
 
 function finish () {
 	# Update background image after resizing screen
-	feh --bg-scale /home/akv/Pictures/facebook_connection_map.png
+	feh --bg-scale /home/akv/.background.png
 
 	# restart xautolock to update coordinates for corners
 	xautolock -restart
