@@ -202,5 +202,9 @@ exec --no-startup-id xautolock -corners 0-0- -time 5 -locker '~/bin/lock_screen.
 # auto off screen after 10 minutes
 exec --no-startup-id xset dpms 0 0 600
 
+# background image - requires feh
+exec --no-startup-id feh --bg-scale ~/.background.png
+
+
 for_window [title="CSSH"] floating enable
 
