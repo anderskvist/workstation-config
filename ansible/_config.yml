@@ -45,3 +45,10 @@
       dest: "~/bin/{{ item.path | basename }}"
       state: link
     with_items: "{{ scripts_found.files }}"
+
+# enable backlight in xorg
+  - name: Copy xorg.conf config
+    become: yes
+    copy:
+      src: ~/Projects/workstation-config/X11/xorg.conf
+      dest: /etc/X11/xorg.conf
