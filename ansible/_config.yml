@@ -4,7 +4,31 @@
   hosts: 127.0.0.1
   connection: local
   tasks:
+
+  - name: Create ~/Projects directory
+    file:
+      path: ~/Projects
+      state: directory
+
+  - name: Create ~/bin directory
+    file:
+      path: ~/Projects
+      state: directory
+
   - name: Install OpenVPN helper script
     git: 
       repo: git@github.com:anderskvist/openvpn-script.git
       dest: ~/Projects/openvpn-script
+
+
+# i3 config
+  - name: Create ~/.config/i3
+    file:
+      path: ~/.config/i3
+      state: directory
+
+  - name: Symlink i3 config
+    file:
+      src: ~/Projects/workstation-config/i3/config
+      dest: ~/.config/i3/config
+      state: link
