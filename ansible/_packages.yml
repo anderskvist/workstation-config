@@ -90,3 +90,16 @@
   - name: Install golang
     apt:
       name: ['golang-go']
+
+# Atom IDE
+  - name: Add Atom apt key
+    apt_key:
+      url: https://packagecloud.io/AtomEditor/atom/gpgkey
+
+  - name: Add Atom apt repository
+    apt_repository:
+      repo: deb [arch=amd64] https://packagecloud.io/AtomEditor/atom/any/ any main
+
+  - name: Install Atom
+    apt:
+      name: ['atom']
