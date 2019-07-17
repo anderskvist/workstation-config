@@ -67,3 +67,17 @@
   - name: Install google-chrome
     apt:
       name: ['google-chrome-stable']
+
+# Balena Etcher
+  - name: Add Etcher apt key
+    apt_key:
+      keyserver: keyserver.ubuntu.com
+      id: 379CE192D401AB61
+
+  - name: Add Etcher apt repository
+    apt_repository:
+      repo: deb https://deb.etcher.io stable etcher
+
+  - name: Install Etcher
+    apt:
+      name: ['balena-etcher-electron']
