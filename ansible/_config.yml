@@ -64,3 +64,16 @@
       src: ~/Projects/workstation-config/clusterssh/config
       dest: ~/.clusterssh/config
       state: link
+
+# enable pcspkr
+  - name: Comment out blacklisting of pcspkr module
+    become: yes
+    replace:
+      path: /etc/modprobe.d/blacklist.conf
+      regexp: '^blacklist pcspkr$'
+      replace: '# blacklist pcspkr'
+  - name: Load pcspkr module
+    become: yes
+    modprobe:
+      name: pcspkr
+      state: present
