@@ -52,3 +52,15 @@
     copy:
       src: ~/Projects/workstation-config/X11/xorg.conf
       dest: /etc/X11/xorg.conf
+
+# clusterssh
+  - name: Create ~/.clusterssh
+    file:
+      path: ~/.clusterssh
+      state: directory
+
+  - name: Symlink clusterssh config
+    file:
+      src: ~/Projects/workstation-config/clusterssh/config
+      dest: ~/.clusterssh/config
+      state: link
