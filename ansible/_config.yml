@@ -1,0 +1,10 @@
+---
+
+- name: Configure
+  hosts: 127.0.0.1
+  connection: local
+  tasks:
+  - name: Install OpenVPN helper script
+    git: 
+      repo: git@github.com:anderskvist/openvpn-script.git
+      dest: ~/Projects/openvpn-script
