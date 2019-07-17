@@ -103,3 +103,16 @@
   - name: Install Atom
     apt:
       name: ['atom']
+
+# Arduino IDE
+  - name: Fetch and extract Arduino IDE in /opt
+    unarchive:
+      src: https://downloads.arduino.cc/arduino-1.8.9-linux64.tar.xz
+      dest: /opt
+      creates: /opt/arduino-1.8.9
+      remote_src: yes
+
+  - name: Install Arduino IDE
+    shell: /opt/arduino-1.8.9/install.sh
+    args:
+      creates: /usr/local/bin/arduino
