@@ -116,3 +116,20 @@
     shell: /opt/arduino-1.8.9/install.sh
     args:
       creates: /usr/local/bin/arduino
+
+# Cura
+  - name: Fetch Cura appimage
+    get_url:
+      url: https://github.com/Ultimaker/Cura/releases/download/4.1.0/Ultimaker_Cura-4.1.0.AppImage
+      dest: /opt/Ultimaker_Cura-4.1.0.AppImage
+      mode: '0755'
+
+  - name: Create Cura .desktop file
+    copy:
+      dest: /usr/share/applications/cura.desktop
+      content: |
+        [Desktop Entry]
+        Type=Application
+        Name=Cura
+        Comment=Slicer software
+        Exec=/opt/Ultimaker_Cura-4.1.0.AppImage
