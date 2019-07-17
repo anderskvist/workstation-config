@@ -184,7 +184,7 @@ exec --no-startup-id syndaemon -d -t -K
 exec --no-startup-id nm-applet
 exec --no-startup-id udiskie
 exec --no-startup-id numlockx
-exec --no-startup-id "ssh-agent ; ssh-add"
+exec --no-startup-id ssh-agent
 
 # screenshot
 # Whole screen
