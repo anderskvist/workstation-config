@@ -16,7 +16,7 @@
 # Applications
   - name: Install applications
     apt:
-      name: ['clusterssh','emacs-nox','openssh-server','openvpn','git','nodejs','npm','nmap','whois','vlc','virt-manager','pwgen','mc','screen','geeqie','curl','beep','lxpolkit']
+      name: ['clusterssh','emacs-nox','openssh-server','openvpn','git','nodejs','npm','nmap','whois','vlc','virt-manager','pwgen','mc','screen','geeqie','curl','beep','lxpolkit','gnucash']
       state: present
 
 
@@ -133,3 +133,20 @@
         Name=Cura
         Comment=Slicer software
         Exec=/opt/Ultimaker_Cura-4.1.0.AppImage
+
+# NextCloud
+  - name: Fetch NextCloud appimage
+    get_url:
+      url: https://download.nextcloud.com/desktop/releases/Linux/Nextcloud-2.5.2-x86_64.AppImage
+      dest: /opt/Nextcloud-2.5.2-x86_64.AppImage
+      mode: '0755'
+
+  - name: Create NextCloud .desktop file
+    copy:
+      dest: /usr/share/applications/nextcloud.desktop
+      content: |
+        [Desktop Entry]
+        Type=Application
+        Name=NextCloud
+        Comment=DropBox clone
+        Exec=/opt/Nextcloud-2.5.2-x86_64.AppImage

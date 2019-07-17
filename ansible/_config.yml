@@ -83,3 +83,15 @@
     copy:
       src: ~/Projects/workstation-config/background.png
       dest: ~/.background.png
+
+# GnuCash in danish
+  - name: Create GnuCash .desktop file
+    copy:
+      dest: ~/.local/share/applications/gnucash.desktop
+      content: |
+        [Desktop Entry]
+        Type=Application
+        MimeType=application/x-gnucash;
+        Name=GnuCash Dansk
+        Exec=env LANGUAGE=da_DK gnucash
+
