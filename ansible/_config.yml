@@ -10,11 +10,6 @@
       path: ~/Projects
       state: directory
 
-  - name: Create ~/bin directory
-    file:
-      path: ~/Projects
-      state: directory
-
   - name: Install OpenVPN helper script
     git: 
       repo: git@github.com:anderskvist/openvpn-script.git
@@ -32,3 +27,21 @@
       src: ~/Projects/workstation-config/i3/config
       dest: ~/.config/i3/config
       state: link
+
+# scripts
+  - name: Create ~/bin directory
+    file:
+      path: ~/Projects
+      state: directory
+
+  - name: Find scripts
+    find:
+      paths: ~/Projects/workstation-config/scripts
+    register: scripts_found
+
+  - name: Symlink for all scripts to ~/bin
+    file:
+      src: "{{ item.path }}"
+      dest: "~/bin/{{ item.path | basename }}"
+      state: link
+    with_items: "{{ scripts_found.files }}"
