@@ -12,7 +12,7 @@ function finish () {
 
 ID=$(cat /var/lib/dbus/machine-id)
 case ${ID} in
-    d6a597973162428ca880c91c02792f1d)
+    d6a597973162428ca880c91c02792f1d|61f2d65eefd7405a9da5ff86251cbd46)
 	# Lenovo Thinkpad X1 Carbon I7
 	EXTERNAL_OUTPUT="DP2-1"
 	INTERNAL_OUTPUT="eDP1"
