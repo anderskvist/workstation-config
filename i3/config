@@ -174,7 +174,7 @@ bindsym XF86AudioPrev exec playerctl previous
 
 # switch screen
 bindsym $mod+Shift+s exec --no-startup-id ~/bin/switch_monitor.sh
-###bindsym XF86SplitScreen exec --no-startup-id ~/bin/switch_monitor.sh
+bindsym XF86Display exec --no-startup-id ~/bin/switch_monitor.sh
 
 # Set more correct DPI for XPS 15 4k screen
 #exec --no-startup-id xrandr --output eDP-1-1 --dpi 200
