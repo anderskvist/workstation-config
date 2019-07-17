@@ -16,7 +16,7 @@
 # Applications
   - name: Install applications
     apt:
-      name: ['clusterssh','emacs-nox','openssh-server','openvpn','git','nodejs','npm','nmap','whois','vlc','virt-manager','pwgen','mc','screen','geeqie','curl','beep']
+      name: ['clusterssh','emacs-nox','openssh-server','openvpn','git','nodejs','npm','nmap','whois','vlc','virt-manager','pwgen','mc','screen','geeqie','curl','beep','lxpolkit']
       state: present
 
 
