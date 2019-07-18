@@ -46,6 +46,14 @@
       state: link
     with_items: "{{ scripts_found.files }}"
 
+# udev screen (un)plug rule
+  - name: Create udev rule for screen (un)plugging
+    become: yes
+    copy:
+      dest: /etc/udev/rules.d/99-screen-unplug.rules
+      content: |
+        ACTION=="change", SUBSYSTEM=="drm", ENV{HOTPLUG}=="1", RUN+="/home/akv/bin/switch_monitor.sh udev"
+
 # enable backlight in xorg
   - name: Copy xorg.conf config
     become: yes
