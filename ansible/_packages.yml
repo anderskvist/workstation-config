@@ -134,6 +134,12 @@
         Comment=Slicer software
         Exec=/opt/Ultimaker_Cura-4.1.0.AppImage
 
+  - name: Fetch Cura appimage
+    get_url:
+      url: https://github.com/Ultimaker/Cura/releases/download/3.5.1/Cura-3.5.1.AppImage
+      dest: /opt/Cura-3.5.1.AppImage
+      mode: '0755'
+
 # NextCloud
   - name: Fetch NextCloud appimage
     get_url:
