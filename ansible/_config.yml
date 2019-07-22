@@ -46,6 +46,32 @@
       state: link
     with_items: "{{ scripts_found.files }}"
 
+# lock screen when suspending
+# https://hund0b1.gitlab.io/2019/01/08/using-i3lock-with-systemd-suspend.html
+  - name: Create systemd service
+    become: yes
+    copy:
+      dest: /etc/systemd/system/i3lock.service
+      content: |
+        [Unit]
+        Description=Lock screen before suspend
+        Before=sleep.target
+
+        [Service]
+        User=akv
+        Type=forking
+        Environment=DISPLAY=:0
+        ExecStart=/home/akv/bin/lock_screen.sh
+
+        [Install]
+        WantedBy=sleep.target
+
+  - name: enable i3lock.service to make sure we lock the screen prior to suspend
+    become: yes
+    systemd:
+      name: i3lock.service
+      enabled: yes
+
 # udev screen (un)plug rule
   - name: Create udev rule for screen (un)plugging
     become: yes
