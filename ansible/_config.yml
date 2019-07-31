@@ -129,3 +129,10 @@
         Name=GnuCash Dansk
         Exec=env LANGUAGE=da_DK gnucash
 
+# Add current user to groups
+  - name: adding current user to group docker and dialout
+    become: yes
+    user:
+      name: '{{ ansible_user_id }}'
+      groups: ['docker','dialout']
+      append: yes
