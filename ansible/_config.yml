@@ -118,6 +118,16 @@
       name: "Battery status check"
       job: "~/bin/battery.sh"
 
+# custom battery jobs
+  - name: Create ~/bin/battery.d/ directory
+    file:
+      path: ~/bin/battery.d/
+      state: directory
+  - name: Symlink beep.sh to ~/bin/battery.dk/beep (no extension)
+    file:
+      src: ~/bin/beep.sh
+      dest: ~/bin/battery.d/beep
+      state: link
 
 # background image
   - name: Copy background image

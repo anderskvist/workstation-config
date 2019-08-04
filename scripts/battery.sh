@@ -8,7 +8,8 @@ BATTINFO=$(acpi -b)
 if [ "${STATUS}" = "Discharging" ]; then
     # BEEP
     if [ ${CAPACITY} -lt 15 ]; then
-	~/bin/beep.sh
+	# Run scripts in ~/bin/battery.d/ to notify of low battery
+	run-parts ~/bin/battery.d/
     fi
 
     # Display notification
