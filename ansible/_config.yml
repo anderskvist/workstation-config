@@ -112,6 +112,13 @@
       name: pcspkr
       state: present
 
+# cronjobs
+  - name: Run battery status check every minute
+    cron:
+      name: "Battery status check"
+      job: "~/bin/battery.sh"
+
+
 # background image
   - name: Copy background image
     copy:
