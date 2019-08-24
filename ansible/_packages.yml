@@ -16,7 +16,7 @@
 # Applications
   - name: Install applications
     apt:
-      name: ['clusterssh','emacs-nox','openssh-server','openvpn','git','nodejs','npm','nmap','whois','vlc','virt-manager','pwgen','mc','screen','geeqie','curl','beep','lxpolkit','gnucash','openscad','inkscape','librecad','gimp','virtualbox','wireshark']
+      name: ['clusterssh','emacs-nox','openssh-server','openvpn','git','nodejs','npm','nmap','whois','vlc','virt-manager','pwgen','mc','screen','geeqie','curl','beep','lxpolkit','gnucash','openscad','inkscape','librecad','gimp','virtualbox','wireshark','sshfs']
       state: present
 
 
@@ -35,6 +35,7 @@
       name: ['docker-ce','python-pip']
       state: present
 
+  # will not work - https://github.com/datmo/datmo/issues/289#issuecomment-466824420
   - name: Install docker-compose
     pip:
       name: docker-compose
