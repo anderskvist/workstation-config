@@ -16,9 +16,14 @@
 # Applications
   - name: Install applications
     apt:
-      name: ['clusterssh','emacs-nox','openssh-server','openvpn','git','nodejs','npm','nmap','whois','vlc','virt-manager','pwgen','mc','screen','geeqie','curl','beep','lxpolkit','gnucash','openscad','inkscape','librecad','gimp','virtualbox','wireshark','sshfs']
+      name: ['clusterssh','emacs-nox','openssh-server','openvpn','git','nodejs','npm','nmap','whois','vlc','virt-manager','pwgen','mc','screen','geeqie','curl','beep','lxpolkit','gnucash','openscad','inkscape','librecad','gimp','virtualbox','wireshark','sshfs','dia']
       state: present
 
+# Astro
+  - name: Install astro applications
+    apt:
+      name: ['kstars','qt5ct','breeze-icon-theme']
+      state: present
 
 # Docker
   - name: Add docker apt key
@@ -90,7 +95,7 @@
 
   - name: Install golang
     apt:
-      name: ['golang-go']
+      name: ['golang-go=2:1.13~1longsleep1+xenial']
 
 # Atom IDE
   - name: Add Atom apt key
