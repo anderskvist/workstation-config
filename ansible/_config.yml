@@ -31,7 +31,7 @@
 # scripts
   - name: Create ~/bin directory
     file:
-      path: ~/Projects
+      path: ~/bin
       state: directory
 
   - name: Find scripts
@@ -46,6 +46,16 @@
       state: link
     with_items: "{{ scripts_found.files }}"
 
+  - name: check if desktop file exists
+    stat:
+      path: ~/.local/share/applications/lastpass-cli.desktop
+    register: lastpass-cli-desktop
+
+  - name: Install desktopfile for lastpass-cli-wrapper.sh
+    shell: "~/bin/lastpass-cli-wrapper.sh install-desktop-file
+    when: lastpass-cli-desktop.stat.exists == False
+
+
 # lock screen when suspending
 # https://hund0b1.gitlab.io/2019/01/08/using-i3lock-with-systemd-suspend.html
   - name: Create systemd service
@@ -58,10 +68,10 @@
         Before=sleep.target
 
         [Service]
-        User=akv
+        User={{ ansible_user_id }}
         Type=forking
         Environment=DISPLAY=:0
-        ExecStart=/home/akv/bin/lock_screen.sh
+        ExecStart=/home/{{ ansible_user_id }}/bin/lock_screen.sh
 
         [Install]
         WantedBy=sleep.target
@@ -78,7 +88,7 @@
     copy:
       dest: /etc/udev/rules.d/99-screen-unplug.rules
       content: |
-        ACTION=="change", SUBSYSTEM=="drm", ENV{HOTPLUG}=="1", RUN+="/home/akv/bin/switch_monitor.sh udev"
+        ACTION=="change", SUBSYSTEM=="drm", ENV{HOTPLUG}=="1", RUN+="/home/{{ ansible_user_id }}/bin/switch_monitor.sh udev"
 
 # enable backlight in xorg
   - name: Copy xorg.conf config
@@ -134,17 +144,6 @@
     copy:
       src: ~/Projects/workstation-config/background.png
       dest: ~/.background.png
-
-# GnuCash in danish
-  - name: Create GnuCash .desktop file
-    copy:
-      dest: ~/.local/share/applications/gnucash.desktop
-      content: |
-        [Desktop Entry]
-        Type=Application
-        MimeType=application/x-gnucash;
-        Name=GnuCash Dansk
-        Exec=env LANGUAGE=da_DK gnucash
 
 # Add current user to groups
   - name: adding current user to group docker and dialout
