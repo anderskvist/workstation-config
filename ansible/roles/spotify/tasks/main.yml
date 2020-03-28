@@ -1,0 +1,16 @@
+---
+# tasks file for spotify
+
+- name: Add spotify apt key
+  apt_key:
+    url: https://download.spotify.com/debian/pubkey.gpg
+    state: present
+
+- name: Add spotify apt repository
+  apt_repository:
+    repo: deb http://repository.spotify.com stable non-free
+
+- name: Install spotify client
+  apt:
+    name: ['spotify-client']
+
