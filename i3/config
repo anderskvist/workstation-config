@@ -208,7 +208,8 @@ exec --no-startup-id xset dpms 0 0 600
 # background image - requires feh
 exec --no-startup-id feh --bg-scale ~/.background.png
 
-
 for_window [title="CSSH"] floating enable
 for_window [title="Zoom Meeting"] floating disable
-
+for_window [title="Private Internet Access$"] floating disable
+for_window [title="Ekos"] floating disable
+for_window [title="Motor Control - Kstars"] floating disable
