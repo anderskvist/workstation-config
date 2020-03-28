@@ -1,0 +1,15 @@
+---
+
+- name: Add Zoom apt key
+  apt_key:
+    keyserver: keyserver.ubuntu.com
+    id: 396060CADD8A75220BFCB369B903BF1861A7C71D
+
+- name: Get list of installed packages
+  package_facts:
+    manager: "auto"
+
+- name: Install Zoom
+  apt:
+    deb: https://www.zoom.us/client/latest/zoom_amd64.deb
+  when: "'zoom' not in ansible_facts.packages"
