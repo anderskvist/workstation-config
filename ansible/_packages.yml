@@ -16,7 +16,7 @@
 # Applications
   - name: Install applications
     apt:
-      name: ['clusterssh','emacs-nox','openssh-server','openvpn','git','nodejs','npm','nmap','whois','vlc','virt-manager','pwgen','mc','screen','geeqie','curl','beep','lxpolkit','virtualbox','wireshark','sshfs','dia','ipcalc']
+      name: ['clusterssh','emacs-nox','openssh-server','openvpn','git','nodejs','npm','nmap','whois','vlc','virt-manager','pwgen','mc','screen','geeqie','curl','beep','lxpolkit','virtualbox','wireshark','sshfs','dia','ipcalc','net-tools','pavucontrol','xclip']
       state: present
 
 # Docker
@@ -40,21 +40,6 @@
       name: docker-compose
 
 
-# Spotify
-  - name: Add spotify apt key
-    apt_key:
-      keyserver: keyserver.ubuntu.com
-      id: 931FF8E79F0876134EDDBDCCA87FF9DF48BF1C90
-
-  - name: Add spotify apt repository
-    apt_repository:
-      repo: deb http://repository.spotify.com stable non-free
-
-  - name: Install spotify client
-    apt:
-      name: ['spotify-client']
-
-
 # Google chrome
   - name: Add google-chrome apt key
     apt_key:
@@ -68,20 +53,6 @@
     apt:
       name: ['google-chrome-stable']
 
-# Balena Etcher
-  - name: Add Etcher apt key
-    apt_key:
-      keyserver: keyserver.ubuntu.com
-      id: 379CE192D401AB61
-
-  - name: Add Etcher apt repository
-    apt_repository:
-      repo: deb https://deb.etcher.io stable etcher
-
-  - name: Install Etcher
-    apt:
-      name: ['balena-etcher-electron']
-
 # golang
   - name: Add golang PPA
     apt_repository:
@@ -89,7 +60,7 @@
 
   - name: Install golang
     apt:
-      name: ['golang-go=2:1.13~1longsleep1+xenial']
+      name: ['golang-go']
 
 # Atom IDE
   - name: Add Atom apt key
