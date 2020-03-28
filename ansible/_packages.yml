@@ -16,13 +16,7 @@
 # Applications
   - name: Install applications
     apt:
-      name: ['clusterssh','emacs-nox','openssh-server','openvpn','git','nodejs','npm','nmap','whois','vlc','virt-manager','pwgen','mc','screen','geeqie','curl','beep','lxpolkit','gnucash','openscad','inkscape','librecad','gimp','virtualbox','wireshark','sshfs','dia','ipcalc']
-      state: present
-
-# Astro
-  - name: Install astro applications
-    apt:
-      name: ['kstars','qt5ct','breeze-icon-theme']
+      name: ['clusterssh','emacs-nox','openssh-server','openvpn','git','nodejs','npm','nmap','whois','vlc','virt-manager','pwgen','mc','screen','geeqie','curl','beep','lxpolkit','virtualbox','wireshark','sshfs','dia','ipcalc']
       state: present
 
 # Docker
@@ -109,56 +103,3 @@
   - name: Install Atom
     apt:
       name: ['atom']
-
-# Arduino IDE
-  - name: Fetch and extract Arduino IDE in /opt
-    unarchive:
-      src: https://downloads.arduino.cc/arduino-1.8.9-linux64.tar.xz
-      dest: /opt
-      creates: /opt/arduino-1.8.9
-      remote_src: yes
-
-  - name: Install Arduino IDE
-    shell: /opt/arduino-1.8.9/install.sh
-    args:
-      creates: /usr/local/bin/arduino
-
-# Cura
-  - name: Fetch Cura appimage
-    get_url:
-      url: https://github.com/Ultimaker/Cura/releases/download/4.1.0/Ultimaker_Cura-4.1.0.AppImage
-      dest: /opt/Ultimaker_Cura-4.1.0.AppImage
-      mode: '0755'
-
-  - name: Create Cura .desktop file
-    copy:
-      dest: /usr/share/applications/cura.desktop
-      content: |
-        [Desktop Entry]
-        Type=Application
-        Name=Cura
-        Comment=Slicer software
-        Exec=/opt/Ultimaker_Cura-4.1.0.AppImage
-
-  - name: Fetch Cura appimage
-    get_url:
-      url: https://github.com/Ultimaker/Cura/releases/download/3.5.1/Cura-3.5.1.AppImage
-      dest: /opt/Cura-3.5.1.AppImage
-      mode: '0755'
-
-# NextCloud
-  - name: Fetch NextCloud appimage
-    get_url:
-      url: https://download.nextcloud.com/desktop/releases/Linux/Nextcloud-2.5.2-x86_64.AppImage
-      dest: /opt/Nextcloud-2.5.2-x86_64.AppImage
-      mode: '0755'
-
-  - name: Create NextCloud .desktop file
-    copy:
-      dest: /usr/share/applications/nextcloud.desktop
-      content: |
-        [Desktop Entry]
-        Type=Application
-        Name=NextCloud
-        Comment=DropBox clone
-        Exec=/opt/Nextcloud-2.5.2-x86_64.AppImage

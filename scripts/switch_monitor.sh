@@ -14,7 +14,7 @@ ID=$(cat /var/lib/dbus/machine-id)
 case ${ID} in
     d6a597973162428ca880c91c02792f1d|61f2d65eefd7405a9da5ff86251cbd46)
 	# Lenovo Thinkpad X1 Carbon I7
-	EXTERNAL_OUTPUT="DP2-1"
+	EXTERNAL_OUTPUT="DP1-1"
 	INTERNAL_OUTPUT="eDP1"
 	;;
     618215eaded54b138cce9aa1c8b9a0b5)
@@ -48,10 +48,12 @@ if [ "${1}" = "udev" ]; then
 	        monitor_mode="EXTERNAL"
 		xrandr --output $INTERNAL_OUTPUT --off --output $EXTERNAL_OUTPUT --primary --auto
 	        DISPLAY=:0.0 /usr/bin/notify-send -i monitor -u normal "EXTERNAL"
+		pactl set-default-sink 15
 	else
 		monitor_mode="INTERNAL"
 		xrandr --output $INTERNAL_OUTPUT --primary --auto --output $EXTERNAL_OUTPUT --off
 	        DISPLAY=:0.0 /usr/bin/notify-send -i monitor -u normal "INTERNAL"
+		pactl set-default-sink 0
 	fi
 	echo "${monitor_mode}" > /tmp/monitor_mode.dat
 	exit
