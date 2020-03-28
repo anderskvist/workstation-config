@@ -4,7 +4,7 @@ trap finish EXIT
 
 function finish () {
 	# Update background image after resizing screen
-	feh --bg-scale /home/akv/.background.png
+	feh --bg-scale /home/${USER}/.background.png
 
 	# restart xautolock to update coordinates for corners
 	xautolock -restart
@@ -27,13 +27,21 @@ case ${ID} in
 	EXTERNAL_OUTPUT="DP1"
 	INTERNAL_OUTPUT="eDP1"
 	;;
+    4b47b32f6ab245fe9881ddcca7a24fda)
+	# Dell Precision 5540
+	EXTERNAL_OUTPUT="DP1-1"
+	INTERNAL_OUTPUT="eDP1"
+	;;
+    *)
+	echo "Unknown hardware"
+	exit
+        ;;
 esac
 
 # For this to work, you will nedd to add the following /etc/udev/rules.d/99-screen-unplug.rules
-# ACTION=="change", SUBSYSTEM=="drm", ENV{HOTPLUG}=="1", RUN+="/home/akv/bin/switch_monitor.sh udev"
+# ACTION=="change", SUBSYSTEM=="drm", ENV{HOTPLUG}=="1", RUN+="/home/${USER}/bin/switch_monitor.sh udev"
 if [ "${1}" = "udev" ]; then
-	export DISPLAY=:0
-	export XAUTHORITY=$(ps -C Xorg -f --no-header | sed -n 's/.*-auth //; s/ -[^ ].*//; p')
+	export XAUTHORITY=$(pgrep Xorg -a -U ${USER} | sed -n 's/.*-auth //; s/ -[^ ].*//; p')
 
 	xrandr|grep "^${EXTERNAL_OUTPUT} connected" > /dev/null 2>&1
 	if [ $? -eq 0 ]; then
