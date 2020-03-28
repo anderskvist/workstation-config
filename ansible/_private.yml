@@ -74,3 +74,14 @@
         Name=NextCloud
         Comment=DropBox clone
         Exec=/opt/Nextcloud-2.5.2-x86_64.AppImage
+
+# GnuCash in danish
+  - name: Create GnuCash .desktop file
+    copy:
+      dest: ~/.local/share/applications/gnucash.desktop
+      content: |
+        [Desktop Entry]
+        Type=Application
+        MimeType=application/x-gnucash;
+        Name=GnuCash Dansk
+        Exec=env LANGUAGE=da_DK gnucash
