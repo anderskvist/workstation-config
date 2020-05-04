@@ -24,11 +24,11 @@
     name: unzip
     state: present
 
-- name: Create directory for terraform
+- name: Create Terraform directory
   file:
     path: "{{terraform_dir}}"
     state: directory
-    recurse: yes
+  register: terraform_directory
 
 - name: Unarchive Terraform archive
   unarchive:
