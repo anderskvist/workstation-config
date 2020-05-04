@@ -18,5 +18,4 @@
 - name: Install Zoom
   apt:
     deb: https://www.zoom.us/client/latest/zoom_amd64.deb
-  when: "'zoom' not in ansible_facts.packages"
   when: zoom_versions_match.rc != 0
