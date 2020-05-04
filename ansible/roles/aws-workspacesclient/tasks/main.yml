@@ -14,5 +14,5 @@
 - name: Install workspacesclient
   apt:
     name: ['workspacesclient']
-    state: present
+    state: latest
   become: yes
