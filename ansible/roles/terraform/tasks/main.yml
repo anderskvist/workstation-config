@@ -1,0 +1,44 @@
+---
+# tasks file for terraform
+
+- name: Check terraform version
+  shell: "terraform version 2>&1 | head -n 1 | grep -q {{terraform_version}}"
+  failed_when: false
+  changed_when: false
+  register: terraform_versions_match
+
+- name: Download terraform archive Linux 32 bits
+  get_url:
+    url: https://releases.hashicorp.com/terraform/{{ terraform_version }}/terraform_{{ terraform_version }}_linux_386.zip
+    dest: /tmp/terraform-{{terraform_version}}.zip
+  when: "'32' in ansible_architecture and 'Linux' == ansible_system and terraform_versions_match.rc != 0"
+
+- name: Download terraform archive Linux 64 bits
+  get_url:
+    url: https://releases.hashicorp.com/terraform/{{ terraform_version }}/terraform_{{ terraform_version }}_linux_amd64.zip
+    dest: /tmp/terraform-{{terraform_version}}.zip
+  when: "'64' in ansible_architecture and 'Linux' == ansible_system and terraform_versions_match.rc != 0"
+
+- name: Install unzip to unarchive terraform
+  package:
+    name: unzip
+    state: present
+
+- name: Create directory for terraform
+  file:
+    path: "{{terraform_dir}}"
+    state: directory
+    recurse: yes
+
+- name: Unarchive Terraform archive
+  unarchive:
+    src: /tmp/terraform-{{terraform_version}}.zip
+    dest: "{{terraform_dir}}"
+    copy: no
+  when: terraform_versions_match.rc != 0 or terraform_directory is changed
+
+- name: Adding terraform command to user path
+  file: 
+    src: "{{terraform_dir}}/terraform"
+    dest: /usr/bin/terraform
+    state: link
