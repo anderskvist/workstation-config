@@ -4,6 +4,7 @@
 - name: Add microsoft key
   apt_key:
     url: https://packages.microsoft.com/keys/microsoft.asc
+    id: BC528686B50D79E339D3721CEB3E94ADBE1229CF
     state: present
 
 - name: Add microsoft apt repository
@@ -13,4 +14,4 @@
 - name: Install VSCode
   apt:
     name: ['code']
-    state: present
+    state: latest
