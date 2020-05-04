@@ -1,15 +1,22 @@
 ---
 
+# Find newest version:
+# curl -s "https://zoom.us/download?os=linux"|grep "span class.*linux-ver-text"|cut -d">" -f2|cut -d"<" -f1|awk '{print $2}'
+
+- name: Check zoom version
+  shell: "dpkg -s zoom | grep -i version | grep -q {{zoom_version}}"
+  failed_when: false
+  changed_when: false
+  register: zoom_versions_match
+
+
 - name: Add Zoom apt key
   apt_key:
     keyserver: keyserver.ubuntu.com
     id: 396060CADD8A75220BFCB369B903BF1861A7C71D
 
-- name: Get list of installed packages
-  package_facts:
-    manager: "auto"
-
 - name: Install Zoom
   apt:
     deb: https://www.zoom.us/client/latest/zoom_amd64.deb
   when: "'zoom' not in ansible_facts.packages"
+  when: zoom_versions_match.rc != 0
