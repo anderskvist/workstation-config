@@ -1,0 +1,6 @@
+---
+# defaults file for pia-vpn
+
+# Find newest version:
+# curl -s https://dnk.privateinternetaccess.com/installer/download_installer_linux_beta | grep "meta http-equiv=refresh"
+pia_version: 2.2.2-05198
