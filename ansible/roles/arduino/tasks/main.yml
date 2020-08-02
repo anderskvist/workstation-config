@@ -1,0 +1,14 @@
+---
+# tasks file for arduino
+
+- name: Fetch and extract Arduino IDE in /opt
+  unarchive:
+    src: https://downloads.arduino.cc/arduino-{{ version }}-linux64.tar.xz
+    dest: /opt
+    creates: /opt/arduino-{{ version }}
+    remote_src: yes
+  register: arduino_download
+
+- name: Install Arduino IDE
+  shell: /opt/arduino-{{ version }}/install.sh
+  when: arduino_download.changed
