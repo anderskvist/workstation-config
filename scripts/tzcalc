@@ -1,0 +1,14 @@
+#!/bin/bash
+
+if [ -z "${1}" ]; then
+  echo "Usage: ${0} \"$(date '+%Y-%m-%d %H:%M')\" Europe/London"
+  exit
+fi
+
+TIME=$(date --date="${1}")
+FORMAT="+%A %d %B %H.%M %Z"
+
+THEIRS=$(TZ=${2} date --date="${TIME}" "${FORMAT}")
+OURS=$(date --date="${TIME}" "${FORMAT}")
+
+echo "${THEIRS} / ${OURS}"
