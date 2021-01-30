@@ -1,0 +1,13 @@
+---
+# tasks file for pia-vpn
+
+- name: Fetch PIA VPN installer version {{ pia_version }}
+  get_url:
+    url: https://installers.privateinternetaccess.com/download/pia-linux-{{ pia_version }}.run
+    dest: /var/tmp/pia-linux-{{ pia_version }}.run
+    mode: '0755'
+  register: pia_installer
+
+- name: Install PIA VPN version {{ pia_version }}
+  shell: sh /var/tmp/pia-linux-{{ pia_version }}.run --nox11 --accept --quiet
+  when: pia_installer.changed

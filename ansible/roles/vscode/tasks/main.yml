@@ -15,3 +15,16 @@
   apt:
     name: ['code']
     state: latest
+
+- name: Register extensions
+  command: code --list-extensions
+  register: extensions
+  become: no
+
+- name: Install golang.go extension
+  command: code --install-extension golang.go
+  become: no
+  when: extensions.stdout_lines is not search('golang.go')
+
+#- debug:
+#    var: extensions.stdout_lines

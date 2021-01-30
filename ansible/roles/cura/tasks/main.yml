@@ -1,0 +1,18 @@
+---
+# tasks file for cura
+- name: Fetch Cura appimage version {{ cura_version }}
+  get_url:
+    url: https://github.com/Ultimaker/Cura/releases/download/{{ cura_version }}/Ultimaker_Cura-{{ cura_version }}.AppImage
+    dest: /opt/Ultimaker_Cura-{{ cura_version }}.AppImage
+    mode: '0755'
+
+- name: Create Cura .desktop file
+  copy:
+    dest: /usr/share/applications/cura.desktop
+    content: |
+      [Desktop Entry]
+      Type=Application
+      Name=Cura
+      Comment=Slicer software
+      Exec=/opt/Ultimaker_Cura-{{ cura_version }}.AppImage
+
