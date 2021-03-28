@@ -9,7 +9,7 @@
 # Window Manager
   - name: Install basic packages for i3
     apt:
-      name: ['i3-wm', 'scrot', 'udiskie', 'numlockx', 'i3status', 'i3lock', 'acpi', 'xautolock', 'xbacklight', 'dmenu', 'feh']
+      name: ['i3-wm', 'scrot', 'udiskie', 'numlockx', 'i3status', 'i3lock', 'acpi', 'xautolock', 'xbacklight', 'dmenu', 'feh', 'dunst']
       state: present
 
 

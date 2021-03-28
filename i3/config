@@ -186,6 +186,7 @@ exec --no-startup-id udiskie
 exec --no-startup-id numlockx
 exec --no-startup-id ssh-agent
 exec --no-startup-id lxpolkit
+exec --no-startup-id dunst
 exec --no-startup-id /opt/Nextcloud-2.5.2-x86_64.AppImage
 
 # screenshot
