@@ -9,5 +9,6 @@ AVG=$(pactl list sinks | sed -n '/^Sink #'${PRIMARY}'/,/Volume:/p'|tail -n 1|awk
 
 for SINK in $(pactl list sinks short|awk '{print $1}'); do
   pactl set-sink-volume ${SINK} ${AVG}%
+  notify-send "Sound volume: ${AVG}%"
 done
 

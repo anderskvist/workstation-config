@@ -8,6 +8,7 @@ MUTE=$(pactl list sinks | sed -n '/^Sink #'${PRIMARY}'/,/Mute:/p'|tail -n 1|awk 
 
 for SINK in $(pactl list sinks short|awk '{print $1}'); do
   pactl set-sink-mute ${SINK} ${MUTE}
+  notify-send "Sound muted: ${MUTE}"
 done
 
 
