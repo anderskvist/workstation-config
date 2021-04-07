@@ -21,10 +21,11 @@
   register: extensions
   become: no
 
-- name: Install golang.go extension
-  command: code --install-extension golang.go
+- name: "Install {{ item }} extension"
+  command: "code --install-extension {{ item }}"
   become: no
-  when: extensions.stdout_lines is not search('golang.go')
+  when: "extensions.stdout_lines is not search(item)"
+  with_items: ['ffaraone.opensslutils','ms-azuretools.vscode-docker','vscoss.vscode-ansible','golang.go']
 
 #- debug:
 #    var: extensions.stdout_lines
