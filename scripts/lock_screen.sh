@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Take a screenshot
-scrot /tmp/screen_locked.png
+scrot -o /tmp/screen_locked.png
 
 # Pixellate it 10x
 mogrify -scale 10% -scale 1000% /tmp/screen_locked.png
