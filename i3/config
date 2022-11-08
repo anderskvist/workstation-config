@@ -192,7 +192,8 @@ exec --no-startup-id /opt/Nextcloud-2.5.2-x86_64.AppImage
 
 # screenshot
 # Whole screen
-bindsym Print exec scrot -e 'mv $f ~/Pictures/'
+#bindsym Print exec scrot -e 'mv $f ~/Pictures/'
+bindsym Print exec flameshot gui
 # Window
 bindsym Shift+Print exec scrot -u -e 'mv $f ~/Pictures/'
 # Select
