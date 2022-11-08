@@ -25,7 +25,7 @@
   command: "code --install-extension {{ item }}"
   become: no
   when: "extensions.stdout_lines is not search(item)"
-  with_items: ['ffaraone.opensslutils','ms-azuretools.vscode-docker','vscoss.vscode-ansible','golang.go']
+  with_items: ['ffaraone.opensslutils','ms-azuretools.vscode-docker','vscoss.vscode-ansible','golang.go','hashicorp.terraform']
 
 #- debug:
 #    var: extensions.stdout_lines
